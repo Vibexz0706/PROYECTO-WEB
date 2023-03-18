@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+
+ <html xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <title>Modificando Articulo</title>
+        <meta charset="UTF-8"/>
+    </head>
+ <body>
+        
+       
+        <form th:action="@{/iniciarsesion/}"
+              method="post"
+              th:object="${usuario}">
+        
+        
+        <label for="usuario">Usuario</label>
+        <input type="text" name="usuario"/>
+        <br>    
+        <label for="contrasena">Cantidad</label>
+        <input type="text" name="cantidad"/>
+        <br>
+       
+        <input type="submit" name="guardar" value="Guardar">
+        </form>
+        
+            
+    </body>
+</html>
