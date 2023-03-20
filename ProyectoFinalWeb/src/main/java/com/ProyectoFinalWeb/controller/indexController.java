@@ -46,11 +46,15 @@ public class indexController {
         
         System.out.println("xd");
         var usuarios=usuarioService.getUsuarios();
+        System.out.println(usuario.getContrasena());
+        System.out.println(usuario.getUsuario());
         System.out.println(usuarios.get(0).getUsuario());
+        System.out.println(usuarios.get(0).getContrasena());
+        
         for (int i=0;i<usuarios.size();i++){
             
-            if (usuarios.get(i).getContrasena().equals(usuario.getContrasena()) && usuarios.get(i).getUsuario().equals(usuario.getUsuario())){
-                return "redirect:/index";
+            if (usuarios.get(i).getContrasena().equals(usuario.getUsuario()) && usuarios.get(i).getUsuario().equals(usuario.getContrasena())){
+                return "index";
             }else{
              
         }
