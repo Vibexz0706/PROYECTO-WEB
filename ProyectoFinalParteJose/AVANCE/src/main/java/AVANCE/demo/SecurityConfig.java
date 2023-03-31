@@ -45,30 +45,29 @@ public class SecurityConfig{
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/",
                                 "/index",
+                                "/css/style.css",
+                                "/css/styleTable.css",
                                 "/factura",
                                 "/factura/listado",
+                                "/layout/plantilla",
                                 "/errores/**",
                                 "/webjars/**",
                                 "/plantilla",
                                 "").permitAll()
                         .requestMatchers(
-                                "/articulo/nuevo",
-                                "/articulo/guardar",
-                                "/articulo/modificar/**",
-                                "/articulo/eliminar/**",
-                                "/categoria/nuevo",
-                                "/categoria/guardar",
-                                "/categoria/modificar/**",
-                                "/categoria/eliminar/**",
-                                "/cliente/nuevo",
-                                "/cliente/guardar",
-                                "/cliente/modificar/**",
-                                "/cliente/eliminar/**"
+                                "/factura/nuevo",
+                                "/css/style",
+                                "/css/styleTable",
+                                "/factura/guardar",
+                                "/factura/modificar/**",
+                                "/factura/eliminar/**"
+                                
                                 ).hasRole("ADMIN")
                         .requestMatchers(
-                                "/articulo/listado",
-                                "/categoria/listado",
-                                "/cliente/listado"
+                                "/factura/listado",
+                                "/css/style.css",
+                                "/css/styleTable.css"
+                                
                         ).hasAnyRole("ADMIN","VENDEDOR")
                 )
                 .formLogin((form) -> form
