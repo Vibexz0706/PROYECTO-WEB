@@ -2,67 +2,33 @@ package com.ProyectoFinalWeb.controller;
 
 
 import com.ProyectoFinalWeb.domain.Cliente;
-import com.ProyectoFinalWeb.domain.Usuario;
-import com.ProyectoFinalWeb.service.UsuarioService;
+import com.ProyectoFinalWeb.service.ArticuloService;
 import com.ProyectoFinalWeb.service.ClienteService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Service
 @Controller
-@Slf4j
 public class indexController {
     
     @Autowired
-    private UsuarioService usuarioService;
+    private ArticuloService articuloService;
     
     
     @GetMapping("/")
     public String inicio(Model model) { 
         
-        var usuarios=usuarioService.getUsuarios();
-        model.addAttribute("usuarios", usuarios);
+        var articulos=articuloService.getArticulos(true);
+        model.addAttribute("articulos", articulos);
         
       
         return "index";
     }
-    
-    @GetMapping("/iniciodesesion/")
-    public String paginaPrincipal(Model model) {
-        var usuarios=usuarioService.getUsuarios();
-        model.addAttribute("usuarios", usuarios);
-        return "iniciodesesion";
-    }
- 
-    
-    @PostMapping("/iniciarsesion/")
-    public String iniciarsesion(Usuario usuario,Model model ) { 
-        
-        System.out.println("xd");
-        var usuarios=usuarioService.getUsuarios();
-        System.out.println(usuario.getContrasena());
-        System.out.println(usuario.getUsuario());
-        System.out.println(usuarios.get(0).getUsuario());
-        System.out.println(usuarios.get(0).getContrasena());
-        
-        for (int i=0;i<usuarios.size();i++){
-            
-            if (usuarios.get(i).getContrasena().equals(usuario.getUsuario()) && usuarios.get(i).getUsuario().equals(usuario.getContrasena())){
-                return "index";
-            }else{
-             
-        }
-      
-    }
-     return "iniciodesesion";
-     
-    } 
+
     
     
 }
