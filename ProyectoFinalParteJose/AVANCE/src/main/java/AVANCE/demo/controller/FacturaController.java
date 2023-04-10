@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/factura")
 public class FacturaController {
     
-     @Autowired
+    @Autowired
     private FacturaService facturaService;
     
     @GetMapping("/listado")
