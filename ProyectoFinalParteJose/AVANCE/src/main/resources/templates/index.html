@@ -10,32 +10,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         
     <title>MTSS</title>
     
     
   
 <body>
-
+      
     <header class="con">
         <nav class="nav container">
             <div class="nav__logo">
                 <h2 class="nav__title">MTSS</h2>
+                <h5 class="nav__items" sec:authorize="isAuthenticated()"><pre>Sesion iniciada como <strong><span sec:authentication="name"></span></strong></pre></h5>
             </div>
 
+            
+            
             <ul class="nav__link nav__link--menu">
-                <li class="nav__items">
+                <li class="nav__items" sec:authorize="isAuthenticated()">
                     <a  th:href="@{/factura/listado}"  class="nav__links">FACTURAS</a>
                 </li>
-                <li class="nav__items">
+                <li class="nav__items" sec:authorize="isAuthenticated()">
                     <a href="#" class="nav__links">EMPLEADOS</a>
                 </li>
-                <li class="nav__items">
+                
+                <li class="nav__items" sec:authorize="!isAuthenticated()">
                     <a th:href="@{/login}" class="nav__links">LOGIN</a>
                 </li>
-                <li class="nav__items">
+                <li class="nav__items" sec:authorize="isAuthenticated()">
+     
+                    <form method="post" th:action="@{/logout}">
+                        <button type="submit"
+                                class="btn" >
+                            <div class="boton_logout">
+                                
+                            <i class="boton_logout">LOGOUT</i>
+                          
+                            </div>
+
+                        </button>
+                    </form>    
+
+                </li>
+                <li class="nav__items" >
                     <a th:href="@{/index}" class="nav__links">HOME</a>
                 </li>
+                
+                
 
                 <img src="./images/close.svg" class="nav__close">
             </ul>

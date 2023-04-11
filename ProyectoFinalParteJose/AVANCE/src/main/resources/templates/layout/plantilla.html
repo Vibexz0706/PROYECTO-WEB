@@ -1,4 +1,10 @@
-<html>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf/extras/springsecurity6">
+
+
     <head th:fragment="head">
         <title>MTSS</title>
         <meta charset="UTF-8">
@@ -21,23 +27,27 @@
 
     <header th:fragment="header" class="header">
 
-        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark nav_general">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">MTTS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
+               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="@{/templates/index}">Home</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Empleados</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Empleados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contacto</a>
+                            <a class="nav-link active" aria-current="page" th:href="@{/}">Contacto</a>
                         </li>
+                        
+                        
 
 
                     </ul>
@@ -51,10 +61,10 @@
     </header> 
 
 
-    <footer th:fragment="footer" class="site-footer">
+    <footer th:fragment="footer" class="footer_caja">
 
 
-        <p class="p-footer ">Todos los derechos reservados</p>
+        <p class="p-footer nav_general footer_color">Todos los derechos reservados</p>
 
 
 

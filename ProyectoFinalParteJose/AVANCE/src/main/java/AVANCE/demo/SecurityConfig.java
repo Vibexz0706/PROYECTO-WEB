@@ -47,8 +47,6 @@ public class SecurityConfig{
                                 "/index",
                                 "/css/style.css",
                                 "/css/styleTable.css",
-                                "/factura",
-                                "/factura/listado",
                                 "/layout/plantilla",
                                 "/errores/**",
                                 "/webjars/**",
