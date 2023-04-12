@@ -15,21 +15,30 @@ public class Empleado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
     private Long idEmpleado;
-
-    private String detalles;
-    private double monto;
-    private String tipo;
-    private boolean activo;
+    private int cedulaEmpleado;
+    private String nombre;
+    private String primerApellido;
+    private String segundoApellido;
+    private String correo;
+    private String puesto;
+    private boolean estado;
 
     public Empleado() {
     }
 
-    public Empleado(String detalles, double monto, String tipo, boolean activo) {
-        this.detalles = detalles;
-        this.monto = monto;
-        this.tipo = tipo;
-        this.activo = activo;
+    public Empleado(Long idEmpleado, int cedulaEmpleado, String nombre, String primerApellido, String segundoApellido, String correo, String puesto, boolean estado) {
+        this.idEmpleado = idEmpleado;
+        this.cedulaEmpleado = cedulaEmpleado;
+        this.nombre = nombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.correo = correo;
+        this.puesto = puesto;
+        this.estado = estado;
     }
+
+    
+  
 
 
 }

@@ -8,15 +8,31 @@
         <title>MTTS</title>
         <meta charset="UTF-8"/>
     </head>
-    <body >
+    <body>
+       
+       <header>
+
+           <nav class="nav_general p-4">
+            <ul class="nav justify-content-center">
+            <li class="text-white ">
+                <h3>Ministerio de Trabajo y Seguridad Social</h3>
+            </li>
+            
+</ul>
+               </nav>
+
+            
        
 
+
+
+    </header> 
         <div class="container my-4">
             <div class="row align-item-center">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <div class="card bg-light mb-3">
-                        <div class="card-header bg-primary">
+                        <div class="card-header nav_general">
                             <h2 class="text-white text-center">[[#{login.login}]]</h2>
                         </div>
                         <div class="card-body">
@@ -48,6 +64,7 @@
                                 <div class="card-footer col text-center">
                                     <button class="btn btn-secondary"
                                             type="submit">
+                                        Login
                                         <i class="fas fa-sign-in-alt"></i>
                                         
                                     </button>
@@ -58,6 +75,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <div class="container my-4">
+            <div class="row align-item-center">
+                <div class="card-footer col text-center">
+                    <a th:href="@{/}" class="text-white nav_general p-4 nav__links" >Pagina Principal</a>
             </div>
         </div>
         

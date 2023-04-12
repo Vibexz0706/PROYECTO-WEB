@@ -27,9 +27,9 @@
 
     <header th:fragment="header" class="header">
 
-        <nav class="navbar navbar-expand-lg navbar navbar-dark nav_general">
+        <nav class="navbar navbar-expand-lg navbar navbar-dark nav_general p-4">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">MTTS</a>
+                <a class="navbar-brand" th:href="@{/}">MTTS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,21 +37,25 @@
                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/}">Empleados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" th:href="@{/}">Contacto</a>
-                        </li>
                         
-                        
-
-
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/factura/listado}">Facturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/empleado/listado}">Empleados</a>
+                        </li>
+                        <li class="nav__items" sec:authorize="isAuthenticated()">
+                            <a class="nav-link active" aria-current="page" th:href="@{/contacto/listado}" >Reportes</a>
+                        </li>
+                       
+      
                     </ul>
 
+                </div>
+                <div class="text-white">
+                    <i class="fa-solid fa-lock"></i> Administrador:
+                    <strong> <span sec:authentication="name"></span></strong>
+  
                 </div>
             </div>
         </nav>
@@ -61,13 +65,62 @@
     </header> 
 
 
-    <footer th:fragment="footer" class="footer_caja">
+    <footer class="nav_general footer_space">
+        <section class="footer__container container ">
+            <nav class="nav nav--footer">
+                
 
+                <ul class="nav__link nav__link--footer">
+                    
+                    <li class="nav__items">
+                        <h3 class="nav__links">MTTS</h3>
+                    </li>
+                    <li class="nav__items" sec:authorize="isAuthenticated()">
+                    <a  th:href="@{/factura/listado}"  class="nav__links">FACTURAS</a>
+                </li>
+                <li class="nav__items" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/empleado/listado}" class="nav__links">EMPLEADOS</a>
+                </li>
+                <li class="nav__items" sec:authorize="isAuthenticated()">
+                  <a th:href="@{/contacto/listado}" class="nav__links">REPORTES</a>
+                </li>
+                
+                <li class="nav__items" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}" class="nav__links">LOGIN</a>
+                </li>
+                <li class="nav__items" sec:authorize="isAuthenticated()">
+     
+                    <form method="post" th:action="@{/logout}">
+                        <button type="submit"
+                                class="btn" >
+                            <div class="boton_logout">
+                                
+                            <i class="boton_logout">LOGOUT</i>
+                          
+                            </div>
 
-        <p class="p-footer nav_general footer_color">Todos los derechos reservados</p>
+                        </button>
+                    </form>    
 
+                </li>
+                <li class="nav__items" >
+                    <a th:href="@{/}" class="nav__links">HOME</a>
+                </li>
+                </ul>
+                
+            </nav>
 
+           
+        </section>
 
+        <section class="foter container">
+
+            
+            <h3 class="lead text-center derechos lenguajes">
+                &COPY [[#{plantilla.derechos}]]  <a th:href="@{/(lang=es)}" class="nav__links">ES</a> <a th:href="@{/(lang=en)}" class="nav__links">EN</a>
+                    
+                    </h3>
+        </section>
     </footer>
 
 

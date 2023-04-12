@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf/extras/springsecurity6">
+    
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>MTTS</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+       
+       <header>
+
+           <nav class="nav_general p-4">
+            <ul class="nav justify-content-center">
+            <li class="text-white ">
+                <h3>Ministerio de Trabajo y Seguridad Social</h3>
+            </li>
+            
+</ul>
+               </nav>
+
+            
+       
+
+
+
+    </header> 
+        <div class="container my-4 p-5">
+            <div class="row align-item-center">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header nav_general">
+                            <h2 class="text-white text-center">Contacto</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" th:action="@{/contactar}">
+                                <div class="form-group row my-3">
+                                    <label class="col-md-5 my-auto"
+                                           for="nombre">
+                                        <i class="fas fa-user-lock"></i>
+                                        
+                                        Nombre:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="text"
+                                               name="nombre
+                                               id="nombre"/>
+                                    </div>
+                                    <label class="col-md-5 my-auto"
+                                           for="apellidos">
+                                        <i class="fas fa-user-lock"></i>
+                                        
+                                        Apellidos:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="text"
+                                               name="apellidos"
+                                               id="apellidos"/>
+                                    </div>
+                                    <label class="col-md-5 my-auto"
+                                           for="correo">
+                                        <i class="fas fa-user-lock"></i>
+                                        
+                                        Correo:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="text"
+                                               name="correo"
+                                               id="correo"/>
+                                    </div>
+                                    <label class="col-md-5 my-auto"
+                                           for="telefono">
+                                        <i class="fas fa-user-lock"></i>
+                                        
+                                        Telefono:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="tel"
+                                               name="telefono"
+                                               id="telefono"/>
+                                    </div>
+                                    <label class="col-md-5 my-auto"
+                                           for="info">
+                                        <i class="fas fa-user-lock"></i>
+                                        
+                                        Informacion:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="text"
+                                               name="info"
+                                               id="info"/>
+                                    </div>
+                                    
+                                    
+                                   
+                                </div>
+                                <div class="card-footer col text-center">
+                                    <button class="btn btn-secondary"
+                                            type="submit">
+                                        Contactar
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        
+                                    </button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container my-4">
+            <div class="row align-item-center">
+                <div class="card-footer col text-center">
+                    <a th:href="@{/}" class="text-white nav_general p-4 nav__links" >Pagina Principal</a>
+            </div>
+        </div>
+        
+
+      
+    </body>
+
+</html>

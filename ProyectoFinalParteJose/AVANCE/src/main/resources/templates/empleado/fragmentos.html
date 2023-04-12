@@ -5,6 +5,7 @@
         <title>MTTS</title>
         <meta charset="UTF-8"/>
         <link href="/css/styleTable.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body >
 
@@ -29,22 +30,33 @@
                               method="POST" class="was-validated">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="nombre">Detalles</label>
-                                    <input type="text" class="form-control" name="detalles" required="true">
+                                    <label for="cedulaEmpleado">#Identificacion</label>
+                                    <input type="text" class="form-control" name="cedulaEmpleado" required="true">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="apellidos">Monto</label>
-                                    <input type="text" class="form-control" name="monto" required="true">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activo">Estado</label>
-                                    <input type="checkbox" class="form-control" name="activo" required="true">
+                                    <label for="primerApellido">Primer Apellido</label>
+                                    <input type="text" class="form-control" name="primerApellido" required="true">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email">Correo</label>
-                                    <input type="email" class="form-control" name="tipo" required="true">
+                                    <label for="segundoApellido">Segundo Apellido</label>
+                                    <input type="text" class="form-control" name="segundoApellido" required="true">
                                 </div>
-
+                                <div class="mb-3">
+                                    <label for="correo">Correo</label>
+                                    <input type="email" class="form-control" name="correo" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="puesto">Puesto</label>
+                                    <input type="text" class="form-control" name="puesto" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="estado">Estado</label>
+                                    <input type="checkbox" class="form-control" name="estado" required="true">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
@@ -79,10 +91,12 @@
                             <div class="table-responsive" th:if="${empleados != null and !empleados.empty}">
                                 <table class="table table-hover table-light">
                                     <thead>
-                                        <tr><th># Empleado</th>
-                                            <th>Detalles</th>
-                                            <th>Monto</th>
-                                            <th>Tipo</th>
+                                        <tr><th>#Identificacion </th>
+                                            <th>Nombre</th>
+                                            <th>Primer Apellido</th>
+                                            <th>Segundo Apellido</th>
+                                            <th>Correo</th>
+                                            <th>Puesto</th>
                                             <th>Estado</th>
                                             <th>Eliminar</th>
                                             <th>Modificar</th>
@@ -91,11 +105,14 @@
                                     </thead>
                                     <tbody>
                                         <tr th:each="empleado: ${empleados}">
-                                            <td>[[${empleado.idEmpleado}]]</td>
-                                            <td>[[${empleado.detalles}]]</td>
-                                            <td>[[${empleado.monto}]]</td>
-                                            <td>[[${empleado.tipo}]]</td>
-                                            <td><input type="checkbox" th:checked="${empleado.activo}"></td>
+                                            <td>[[${empleado.cedulaEmpleado}]]</td>
+                                            <td>[[${empleado.nombre}]]</td>
+                                            <td>[[${empleado.primerApellido}]]</td>
+                                            <td>[[${empleado.segundoApellido}]]</td>
+                                            <td>[[${empleado.correo}]]</td>
+                                            <td>[[${empleado.puesto}]]</td>
+                        
+                                            <td><input type="checkbox" th:checked="${empleado.estado}"></td>
 
 
 
@@ -145,27 +162,47 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="nombre">detalles</label>
+                                                    <label for="cedulaEmpleado">#Identifcacion</label>
+                                                    <input type="text" class="form-control bg-dark text-white" 
+                                                           name="cedulaEmpleado" th:field="*{cedulaEmpleado}"
+                                                           
+                                                           readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nombre">Nombre</label>
                                                     <input type="text" class="form-control" 
-                                                           name="nombre" th:field="*{detalles}"
+                                                           name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="apellidos">Monto</label>
+                                                    <label for="primerApellido">Primer Apellido</label>
                                                     <input type="text" class="form-control" 
-                                                           name="apellidos" th:field="*{monto}"
+                                                           name="primerApellido" th:field="*{primerApellido}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="email">Correo</label>
+                                                    <label for="segundoApellido">Primer Apellido</label>
                                                     <input type="text" class="form-control" 
-                                                           name="correo" th:field="*{tipo}"
+                                                           name="segundoApellido" th:field="*{segundoApellido}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="activo">Activo</label>
+                                                    <label for="correo">Correo</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="correo" th:field="*{correo}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="puesto">Puesto</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="puesto" th:field="*{puesto}"
+                                                           required="true">
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="estado">Estado</label>
                                                     <input type="checkbox" 
-                                                           name="activo" th:field="*{activo}">
+                                                           name="estado" th:field="*{estado}">
                                                 </div>
 
                                             </div>
@@ -205,7 +242,7 @@
         
         <section th:fragment="listadoEmpleados" >
             <div class="mb-34">
-                s
+                
             </div>
         </section>
 
