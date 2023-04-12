@@ -47,6 +47,7 @@ public class SecurityConfig{
                                 "/index",
                                 "/css/style.css",
                                 "/css/styleTable.css",
+                                "/css/img4.jpg",
                                 "/layout/plantilla",
                                 "/errores/**",
                                 "/webjars/**",
@@ -58,11 +59,16 @@ public class SecurityConfig{
                                 "/css/styleTable",
                                 "/factura/guardar",
                                 "/factura/modificar/**",
-                                "/factura/eliminar/**"
+                                "/factura/eliminar/**",
+                                "/empleado/nuevo",
+                                "/empleado/guardar",
+                                "/empleado/modificar/**",
+                                "/empleado/eliminar/**"
                                 
                                 ).hasRole("ADMIN")
                         .requestMatchers(
                                 "/factura/listado",
+                                "/empleado/listado",
                                 "/css/style.css",
                                 "/css/styleTable.css"
                                 

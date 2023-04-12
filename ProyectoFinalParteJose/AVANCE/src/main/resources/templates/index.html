@@ -36,7 +36,7 @@
                     <a  th:href="@{/factura/listado}"  class="nav__links">FACTURAS</a>
                 </li>
                 <li class="nav__items" sec:authorize="isAuthenticated()">
-                    <a href="#" class="nav__links">EMPLEADOS</a>
+                    <a th:href="@{/empleado/listado}" class="nav__links">EMPLEADOS</a>
                 </li>
                 
                 <li class="nav__items" sec:authorize="!isAuthenticated()">
@@ -85,7 +85,9 @@
             
             <div class="menu">
                 <article class="iconos">
-                    <img src="/imagenes/descarga (1).jpg" class="about__icon">
+                  
+                        <img src="/css/img4.jpg" class="about__icon" />
+                        
                     <h3 class="titulo">HONESTIDAD</h3>
                     <p class="sobre_parrafos">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore
                         porro eius facilis?</p>
@@ -93,14 +95,14 @@
 
                 <article class="iconos">
                     <img src="/imagenes/descarga (1).jpg" class="about__icon">
-                    <h3 class="titulo">HONESTIDAD</h3>
+                    <h3 class="titulo">RESPETO</h3>
                     <p class="sobre_parrafos">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore
                         porro eius facilis?</p>
                 </article>
 
                 <article class="iconos">
                     <img src="/imagenes/descarga (1).jpg" class="about__icon">
-                    <h3 class="titulo">HONESTIDAD</h3>
+                    <h3 class="titulo">TRABAJO EN EQUIPO</h3>
                     <p class="sobre_parrafos">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae tempore
                         porro eius facilis?</p>
                 </article>
