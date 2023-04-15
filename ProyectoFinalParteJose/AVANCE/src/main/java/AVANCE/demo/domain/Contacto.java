@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "empleado")
+@Table(name = "contacto")
 public class Contacto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -17,7 +17,8 @@ public class Contacto implements Serializable {
     private Long idContacto;
     
     private String nombre;
-    private String apellidos;
+    private String primerApellido;
+    private String segundoApellido;
     private String correo;
     private int telefono;
     private String info;
@@ -25,14 +26,16 @@ public class Contacto implements Serializable {
     public Contacto() {
     }
 
-    public Contacto(Long idContacto, String nombre, String apellidos, String correo, int telefono, String info) {
+    public Contacto(Long idContacto, String nombre, String primerApellido, String segundoApellido, String correo, int telefono, String info) {
         this.idContacto = idContacto;
         this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
         this.correo = correo;
         this.telefono = telefono;
         this.info = info;
     }
+
 
   
     

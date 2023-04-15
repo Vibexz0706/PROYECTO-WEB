@@ -49,6 +49,10 @@ public class SecurityConfig{
                                 "/css/styleTable.css",
                                 "/css/preguntas.js",
                                 "/css/menu.js",
+                                "/contacto",
+                                "/contacto/contactar",
+                                "/contacto/guardar",
+                                
                                 "/css/img1.jpg",
                                 "/css/img4.jpg",
                                 "/css/img6.png",
@@ -67,6 +71,7 @@ public class SecurityConfig{
                                 "/factura/modificar/**",
                                 "/factura/eliminar/**",
                                 "/empleado/nuevo",
+                                "/contacto/listado",
                                 "/empleado/guardar",
                                 "/empleado/modificar/**",
                                 "/empleado/eliminar/**"

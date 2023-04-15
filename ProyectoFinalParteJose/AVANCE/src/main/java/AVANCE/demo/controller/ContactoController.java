@@ -32,23 +32,28 @@ public class ContactoController {
     public String inicio(Model model) { 
         var contactos=contactoService.getContactos();
         model.addAttribute("contactos", contactos);
-        model.addAttribute("totalContactos",contactos.size());
-        var totalCredito=0;
-         model.addAttribute("totalCredito",totalCredito);
+       
 
         return "/contacto/listado";
     }
-    
-     @GetMapping("/nuevo")
-    public String contactoNuevo(Contacto contacto) { 
-        return "/contacto/modifica";
+    @GetMapping("/contactar")
+    public String contactar(Model model) { 
+        
+        return "/contacto/contactar";
     }
     
     @PostMapping("/guardar")
     public String contactoGuardar(Contacto contacto) { 
         contactoService.save(contacto);
-        return "redirect:/contacto/listado";
+        return "redirect:/contacto/contactar";
     }
+    
+    @GetMapping("/nuevo")
+    public String contactoNuevo(Contacto contacto) { 
+        return "/contacto/modifica";
+    }
+    
+    
     
     @GetMapping("/eliminar/{idContacto}")
     public String contactoEliminar(Contacto contacto) { 

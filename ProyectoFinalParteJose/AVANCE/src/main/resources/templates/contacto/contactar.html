@@ -15,7 +15,7 @@
            <nav class="nav_general p-4">
             <ul class="nav justify-content-center">
             <li class="text-white ">
-                <h3>Ministerio de Trabajo y Seguridad Social</h3>
+                <h3>Contactar con nosotros</h3>
             </li>
             
 </ul>
@@ -27,42 +27,54 @@
 
 
     </header> 
-        <div class="container my-4 p-5">
-            <div class="row align-item-center">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
+        <div class="my-4">
+            <div class="contacto_container">
+                
+                <div class="col-md-4 contacto">
                     <div class="card bg-light mb-3">
-                        <div class="card-header nav_general">
+                        <div class="card-header color_secundario">
                             <h2 class="text-white text-center">Contacto</h2>
                         </div>
                         <div class="card-body">
-                            <form method="post" th:action="@{/contactar}">
+                            <form method="POST" th:action="@{/contacto/guardar}" th:object="${contacto}">
                                 <div class="form-group row my-3">
+                                   
                                     <label class="col-md-5 my-auto"
                                            for="nombre">
-                                        <i class="fas fa-user-lock"></i>
+                                       
                                         
                                         Nombre:</label>
                                     <div class="col-md-7 my-auto">
                                         <input class="form-control" 
                                                type="text"
-                                               name="nombre
-                                               id="nombre"/>
+                                               name="nombre"
+                                               id="Nombre"/>
                                     </div>
                                     <label class="col-md-5 my-auto"
-                                           for="apellidos">
-                                        <i class="fas fa-user-lock"></i>
+                                           for="primerApellido">
+                                     
                                         
-                                        Apellidos:</label>
+                                        Primer Apellido:</label>
                                     <div class="col-md-7 my-auto">
                                         <input class="form-control" 
                                                type="text"
-                                               name="apellidos"
-                                               id="apellidos"/>
+                                               name="primerApellido"
+                                               id="primerApellido"/>
+                                    </div>
+                                    <label class="col-md-5 my-auto"
+                                           for="segundoApellido">
+                                     
+                                        
+                                        Segundo Apellido:</label>
+                                    <div class="col-md-7 my-auto">
+                                        <input class="form-control" 
+                                               type="text"
+                                               name="segundoApellido"
+                                               id="segundoApellido"/>
                                     </div>
                                     <label class="col-md-5 my-auto"
                                            for="correo">
-                                        <i class="fas fa-user-lock"></i>
+                                      
                                         
                                         Correo:</label>
                                     <div class="col-md-7 my-auto">
@@ -73,32 +85,29 @@
                                     </div>
                                     <label class="col-md-5 my-auto"
                                            for="telefono">
-                                        <i class="fas fa-user-lock"></i>
+                                  
                                         
                                         Telefono:</label>
                                     <div class="col-md-7 my-auto">
                                         <input class="form-control" 
-                                               type="tel"
+                                               type="text"
                                                name="telefono"
                                                id="telefono"/>
                                     </div>
                                     <label class="col-md-5 my-auto"
                                            for="info">
-                                        <i class="fas fa-user-lock"></i>
+                                       
                                         
                                         Informacion:</label>
                                     <div class="col-md-7 my-auto">
-                                        <input class="form-control" 
-                                               type="text"
-                                               name="info"
-                                               id="info"/>
+                                        <textarea class="form-control" id="info" name="info" rows="5" cols="10"></textarea>                        
                                     </div>
                                     
                                     
                                    
                                 </div>
-                                <div class="card-footer col text-center">
-                                    <button class="btn btn-secondary"
+                                <div class="col text-center">
+                                    <button class="btn color_secundario text-white"
                                             type="submit">
                                         Contactar
                                         <i class="fas fa-sign-in-alt"></i>
@@ -106,20 +115,21 @@
                                     </button>
                                 </div>
 
+           
+                                <div class="my-5 p-2 text-center">
+                                    <a th:href="@{/}" class="text-white color_secundario p-3 nav__links border-3 rounded-3" >Pagina Principal</a>
+                                </div>
+       
+       
 
                             </form>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
         
-        <div class="container my-4">
-            <div class="row align-item-center">
-                <div class="card-footer col text-center">
-                    <a th:href="@{/}" class="text-white nav_general p-4 nav__links" >Pagina Principal</a>
-            </div>
-        </div>
         
 
       

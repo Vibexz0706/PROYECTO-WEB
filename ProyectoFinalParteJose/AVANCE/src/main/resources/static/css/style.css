@@ -178,7 +178,33 @@ body {
     overflow: hidden;
     grid-template-columns: repeat(auto-fit, minmax(260px, auto));
 }
+.contacto_container{
+    display: flex;
+    justify-content: center;
+}
 
+.contacto{
+    width: 550px;
+    height: 500px;
+}
+.margen_footer{
+    padding-bottom: 200px;
+    margin: 70px 20px 40px 20px;
+}
+.contenedor_titulo{
+    display: flex;
+    justify-content: center;
+}
+.titulo_reportes{
+    width: 500px;
+    height:  70px;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 20px;
+    font-size: 25px;
+}
+.color_secundario{
+    background-color:rgb(88, 135, 165);
+}
 
 .iconos {
     display: grid;
