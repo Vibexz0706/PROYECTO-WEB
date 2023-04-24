@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf/extras/springsecurity6">
+    
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>MTTS</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+       
+       <header>
+
+           <nav class="nav_general p-4">
+            <ul class="nav justify-content-center">
+            <li class="text-white ">
+                <h3>Encuentranos</h3>
+            </li>
+            
+</ul>
+               </nav>
+
+            
+       
+
+
+
+    </header> 
+        
+        
+        <section class="card-body text-center my-4">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31439.368601109665!2d-84.11424502568356!3d9.940524900000009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e49e41e0968f%3A0x59a3de5c3f7795e6!2sMinistry%20of%20Labour%20and%20Social%20Security!5e0!3m2!1sen!2scr!4v1682321416893!5m2!1sen!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-5"></iframe>
+        </section>
+
+        <div class="container my-1">
+            <div class="row align-item-center">
+                <div class="card-footer col text-center">
+                    <a th:href="@{/}" class="text-white nav_general p-4 nav__links rounded-3" >Pagina Principal</a>
+            </div>
+        </div>
+    </body>
+    
+
+</html>

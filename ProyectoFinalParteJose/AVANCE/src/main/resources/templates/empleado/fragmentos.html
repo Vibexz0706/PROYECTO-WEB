@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>MTTS</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/styleTable.css" rel="stylesheet" type="text/css"/>
+        
+    </head>
+    <body >
+
+
+        <!-- 2 Fragmento para agregar empleado, es la ventana modal -->
+        <section th:fragment="agregarEmpleado">
+            <div id="agregarEmpleado" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar Empleado</h5>
+                            <button type="button" 
+                                    class="btn-close" 
+                                    data-bs-dismiss="modal" 
+                                    aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/empleado/guardar}" th:object="${empleado}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="cedulaEmpleado">#Identificacion</label>
+                                    <input type="text" class="form-control" name="cedulaEmpleado" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="primerApellido">Primer Apellido</label>
+                                    <input type="text" class="form-control" name="primerApellido" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="segundoApellido">Segundo Apellido</label>
+                                    <input type="text" class="form-control" name="segundoApellido" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="correo">Correo</label>
+                                    <input type="email" class="form-control" name="correo" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="puesto">Puesto</label>
+                                    <input type="text" class="form-control" name="puesto" required="true">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="estado">Estado</label>
+                                    <input type="checkbox" class="form-control" name="estado" required="true">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-secondary" type="submit" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Sección principal para mostrar la informacion de la entidad empleado -->
+        <section th:fragment="listadoEmpleados" id="empleados">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+
+                                <h4 class="text-center mb-5">Listado de Empleados</h4>
+                                <div class="text-center mb-5">
+                                    <button  th:fragment="botonesAgregar" 
+                                             type="button" 
+                                             class="btn btn-primary btn-block nav_general border-0" 
+                                             data-bs-toggle="modal" 
+                                             data-bs-target="#agregarEmpleado">
+                                        <i class="fa fa-list-alt"></i> Agregar Empleado
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="table-responsive" th:if="${empleados != null and !empleados.empty}">
+                                <table class="table table-hover table-light">
+                                    <thead>
+                                        <tr><th>#Identificacion </th>
+                                            <th>Nombre</th>
+                                            <th>Primer Apellido</th>
+                                            <th>Segundo Apellido</th>
+                                            <th>Correo</th>
+                                            <th>Puesto</th>
+                                            <th>Estado</th>
+                                            <th>Eliminar</th>
+                                            <th>Modificar</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="empleado: ${empleados}">
+                                            <td>[[${empleado.cedulaEmpleado}]]</td>
+                                            <td>[[${empleado.nombre}]]</td>
+                                            <td>[[${empleado.primerApellido}]]</td>
+                                            <td>[[${empleado.segundoApellido}]]</td>
+                                            <td>[[${empleado.correo}]]</td>
+                                            <td>[[${empleado.puesto}]]</td>
+                        
+                                            <td><input type="checkbox" th:checked="${empleado.estado}"></td>
+
+
+
+                                            <td>
+                                                <a th:href="@{/empleado/eliminar/}+${empleado.idEmpleado}"
+                                                   class="btn btn-dark">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a th:href="@{/empleado/modificar/}+${empleado.idEmpleado}"
+                                                   class="btn btn-primary">
+                                                    <i class="fas fa-pencil"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div class="text-center p-2" th:if="${empleados == null or empleados.empty}">
+                                <span>Lista vacía</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+        <section th:fragment="editarEmpleado">
+            <div class="row">
+                <div class="col-md-14">
+                    <form method="POST"
+                          th:action="@{/empleado/guardar}" th:object="${empleado}"
+                          class="was-validated">
+                        <input type="hidden" name="idEmpleado" th:field="*{idEmpleado}"/>
+                        <section th:replace="~{empleado/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h4>Actualizar</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="mb-3">
+                                                    <label for="cedulaEmpleado">#Identifcacion</label>
+                                                    <input type="text" class="form-control bg-dark text-white" 
+                                                           name="cedulaEmpleado" th:field="*{cedulaEmpleado}"
+                                                           
+                                                           readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nombre">Nombre</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="nombre" th:field="*{nombre}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="primerApellido">Primer Apellido</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="primerApellido" th:field="*{primerApellido}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="segundoApellido">Primer Apellido</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="segundoApellido" th:field="*{segundoApellido}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="correo">Correo</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="correo" th:field="*{correo}"
+                                                           required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="puesto">Puesto</label>
+                                                    <input type="text" class="form-control" 
+                                                           name="puesto" th:field="*{puesto}"
+                                                           required="true">
+                                                </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="estado">Estado</label>
+                                                    <input type="checkbox" 
+                                                           name="estado" th:field="*{estado}">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/empleado/listado}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">                                
+                        <a th:href="@{/empleado/eliminar/}+${empleado.idEmpleado}"
+                           class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+        <section th:fragment="listadoEmpleados" >
+            <div class="mb-34">
+                
+            </div>
+        </section>
+
+
+      
+        
+    </body>
+    
+    <footer  th:replace="~{layout/plantilla :: footer}"/>
+
+</html>
+
+
